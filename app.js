@@ -9,7 +9,7 @@ window.addEventListener('load', ()=> {
 
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(positon => {
-            long = positon.coords.latitude;
+            long = positon.coords.longitude;
             lat = positon.coords.latitude;
 
             const proxy = 'https://cors-anywhere.herokuapp.com/'
@@ -25,10 +25,10 @@ window.addEventListener('load', ()=> {
                     temperatureDescription.textContent = summary;
                     locationTimezone.textContent = data.timezone;
                         // Formula for celsuis
-                        let celsius = (temperature - 32) * (5 / 9);
+                        let celsius = (temperature - 32) * (9 / 5);
                     // Set Icon
+                    console.log(data)
                     setIcons(icon, document.querySelector('.icon'));
-                    
                     temperatureSection.addEventListener("click", () => {
                         if(temperatureSpan.textContent === "F"){
                             temperatureSpan.textContent = "C";
